@@ -1,0 +1,539 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Project_PE_2020Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alumno">
+          <Key>
+            <PropertyRef Name="carnet" />
+          </Key>
+          <Property Name="carnet" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellido" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idCa" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CursoAcademico">
+          <Key>
+            <PropertyRef Name="idCA" />
+          </Key>
+          <Property Name="idCA" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Detalle_Alumno">
+          <Key>
+            <PropertyRef Name="idDetA" />
+          </Key>
+          <Property Name="idDetA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="carnet" Type="int" Nullable="false" />
+          <Property Name="idCa" Type="int" Nullable="false" />
+          <Property Name="porcentajeAsistencia" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Detalle_Nota">
+          <Key>
+            <PropertyRef Name="idDetN" />
+          </Key>
+          <Property Name="idDetN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="carnet" Type="int" Nullable="false" />
+          <Property Name="nota" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="idMod" Type="int" Nullable="false" />
+          <Property Name="idEv" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Evaluacion">
+          <Key>
+            <PropertyRef Name="idEv" />
+          </Key>
+          <Property Name="idEv" Type="int" Nullable="false" />
+          <Property Name="evaluacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idPon" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modulo">
+          <Key>
+            <PropertyRef Name="idMod" />
+          </Key>
+          <Property Name="idMod" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="idCA" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ponderaciones">
+          <Key>
+            <PropertyRef Name="idPon" />
+          </Key>
+          <Property Name="idPon" Type="int" Nullable="false" />
+          <Property Name="ponderacion" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+        </EntityType>
+        <Association Name="CA_PK">
+          <End Role="CursoAcademico" Type="Self.CursoAcademico" Multiplicity="1" />
+          <End Role="Modulo" Type="Self.Modulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursoAcademico">
+              <PropertyRef Name="idCA" />
+            </Principal>
+            <Dependent Role="Modulo">
+              <PropertyRef Name="idCA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="carnet_FK">
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="1" />
+          <End Role="Detalle_Nota" Type="Self.Detalle_Nota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumno">
+              <PropertyRef Name="carnet" />
+            </Principal>
+            <Dependent Role="Detalle_Nota">
+              <PropertyRef Name="carnet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_carnetFK">
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="1" />
+          <End Role="Detalle_Alumno" Type="Self.Detalle_Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumno">
+              <PropertyRef Name="carnet" />
+            </Principal>
+            <Dependent Role="Detalle_Alumno">
+              <PropertyRef Name="carnet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_idCaFK">
+          <End Role="CursoAcademico" Type="Self.CursoAcademico" Multiplicity="1" />
+          <End Role="Detalle_Alumno" Type="Self.Detalle_Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursoAcademico">
+              <PropertyRef Name="idCA" />
+            </Principal>
+            <Dependent Role="Detalle_Alumno">
+              <PropertyRef Name="idCa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="idCa_FK">
+          <End Role="CursoAcademico" Type="Self.CursoAcademico" Multiplicity="1" />
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursoAcademico">
+              <PropertyRef Name="idCA" />
+            </Principal>
+            <Dependent Role="Alumno">
+              <PropertyRef Name="idCa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="idEv_FK">
+          <End Role="Evaluacion" Type="Self.Evaluacion" Multiplicity="1" />
+          <End Role="Detalle_Nota" Type="Self.Detalle_Nota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evaluacion">
+              <PropertyRef Name="idEv" />
+            </Principal>
+            <Dependent Role="Detalle_Nota">
+              <PropertyRef Name="idEv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="idMod_FK">
+          <End Role="Modulo" Type="Self.Modulo" Multiplicity="1" />
+          <End Role="Detalle_Nota" Type="Self.Detalle_Nota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulo">
+              <PropertyRef Name="idMod" />
+            </Principal>
+            <Dependent Role="Detalle_Nota">
+              <PropertyRef Name="idMod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="idPon_FK">
+          <End Role="Ponderaciones" Type="Self.Ponderaciones" Multiplicity="1" />
+          <End Role="Evaluacion" Type="Self.Evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ponderaciones">
+              <PropertyRef Name="idPon" />
+            </Principal>
+            <Dependent Role="Evaluacion">
+              <PropertyRef Name="idPon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AgregarDetalleNota" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="carnet" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AgregarDetalleNota1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="carnet" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CalcularNotaModulo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="carnet" Type="int" Mode="In" />
+          <Parameter Name="idMod" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="Project_PE_2020ModelStoreContainer">
+          <EntitySet Name="Alumno" EntityType="Self.Alumno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CursoAcademico" EntityType="Self.CursoAcademico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Detalle_Alumno" EntityType="Self.Detalle_Alumno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Detalle_Nota" EntityType="Self.Detalle_Nota" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Evaluacion" EntityType="Self.Evaluacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modulo" EntityType="Self.Modulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ponderaciones" EntityType="Self.Ponderaciones" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="CA_PK" Association="Self.CA_PK">
+            <End Role="CursoAcademico" EntitySet="CursoAcademico" />
+            <End Role="Modulo" EntitySet="Modulo" />
+          </AssociationSet>
+          <AssociationSet Name="carnet_FK" Association="Self.carnet_FK">
+            <End Role="Alumno" EntitySet="Alumno" />
+            <End Role="Detalle_Nota" EntitySet="Detalle_Nota" />
+          </AssociationSet>
+          <AssociationSet Name="fk_carnetFK" Association="Self.fk_carnetFK">
+            <End Role="Alumno" EntitySet="Alumno" />
+            <End Role="Detalle_Alumno" EntitySet="Detalle_Alumno" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idCaFK" Association="Self.fk_idCaFK">
+            <End Role="CursoAcademico" EntitySet="CursoAcademico" />
+            <End Role="Detalle_Alumno" EntitySet="Detalle_Alumno" />
+          </AssociationSet>
+          <AssociationSet Name="idCa_FK" Association="Self.idCa_FK">
+            <End Role="CursoAcademico" EntitySet="CursoAcademico" />
+            <End Role="Alumno" EntitySet="Alumno" />
+          </AssociationSet>
+          <AssociationSet Name="idEv_FK" Association="Self.idEv_FK">
+            <End Role="Evaluacion" EntitySet="Evaluacion" />
+            <End Role="Detalle_Nota" EntitySet="Detalle_Nota" />
+          </AssociationSet>
+          <AssociationSet Name="idMod_FK" Association="Self.idMod_FK">
+            <End Role="Modulo" EntitySet="Modulo" />
+            <End Role="Detalle_Nota" EntitySet="Detalle_Nota" />
+          </AssociationSet>
+          <AssociationSet Name="idPon_FK" Association="Self.idPon_FK">
+            <End Role="Ponderaciones" EntitySet="Ponderaciones" />
+            <End Role="Evaluacion" EntitySet="Evaluacion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Project_PE_2020Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Alumno">
+          <Key>
+            <PropertyRef Name="carnet" />
+          </Key>
+          <Property Name="carnet" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idCa" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Detalle_Nota" Relationship="Self.carnet_FK" FromRole="Alumno" ToRole="Detalle_Nota" />
+          <NavigationProperty Name="Detalle_Alumno" Relationship="Self.fk_carnetFK" FromRole="Alumno" ToRole="Detalle_Alumno" />
+          <NavigationProperty Name="CursoAcademico" Relationship="Self.idCa_FK" FromRole="Alumno" ToRole="CursoAcademico" />
+        </EntityType>
+        <EntityType Name="CursoAcademico">
+          <Key>
+            <PropertyRef Name="idCA" />
+          </Key>
+          <Property Name="idCA" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Alumno" Relationship="Self.idCa_FK" FromRole="CursoAcademico" ToRole="Alumno" />
+          <NavigationProperty Name="Modulo" Relationship="Self.CA_PK" FromRole="CursoAcademico" ToRole="Modulo" />
+          <NavigationProperty Name="Detalle_Alumno" Relationship="Self.fk_idCaFK" FromRole="CursoAcademico" ToRole="Detalle_Alumno" />
+        </EntityType>
+        <EntityType Name="Detalle_Alumno">
+          <Key>
+            <PropertyRef Name="idDetA" />
+          </Key>
+          <Property Name="idDetA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="carnet" Type="Int32" Nullable="false" />
+          <Property Name="idCa" Type="Int32" Nullable="false" />
+          <Property Name="porcentajeAsistencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Alumno" Relationship="Self.fk_carnetFK" FromRole="Detalle_Alumno" ToRole="Alumno" />
+          <NavigationProperty Name="CursoAcademico" Relationship="Self.fk_idCaFK" FromRole="Detalle_Alumno" ToRole="CursoAcademico" />
+        </EntityType>
+        <EntityType Name="Detalle_Nota">
+          <Key>
+            <PropertyRef Name="idDetN" />
+          </Key>
+          <Property Name="idDetN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="carnet" Type="Int32" Nullable="false" />
+          <Property Name="nota" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="idMod" Type="Int32" Nullable="false" />
+          <Property Name="idEv" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Alumno" Relationship="Self.carnet_FK" FromRole="Detalle_Nota" ToRole="Alumno" />
+          <NavigationProperty Name="Evaluacion" Relationship="Self.idEv_FK" FromRole="Detalle_Nota" ToRole="Evaluacion" />
+          <NavigationProperty Name="Modulo" Relationship="Self.idMod_FK" FromRole="Detalle_Nota" ToRole="Modulo" />
+        </EntityType>
+        <EntityType Name="Evaluacion">
+          <Key>
+            <PropertyRef Name="idEv" />
+          </Key>
+          <Property Name="idEv" Type="Int32" Nullable="false" />
+          <Property Name="evaluacion1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idPon" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Detalle_Nota" Relationship="Self.idEv_FK" FromRole="Evaluacion" ToRole="Detalle_Nota" />
+          <NavigationProperty Name="Ponderaciones" Relationship="Self.idPon_FK" FromRole="Evaluacion" ToRole="Ponderaciones" />
+        </EntityType>
+        <EntityType Name="Modulo">
+          <Key>
+            <PropertyRef Name="idMod" />
+          </Key>
+          <Property Name="idMod" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idCA" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CursoAcademico" Relationship="Self.CA_PK" FromRole="Modulo" ToRole="CursoAcademico" />
+          <NavigationProperty Name="Detalle_Nota" Relationship="Self.idMod_FK" FromRole="Modulo" ToRole="Detalle_Nota" />
+        </EntityType>
+        <EntityType Name="Ponderaciones">
+          <Key>
+            <PropertyRef Name="idPon" />
+          </Key>
+          <Property Name="idPon" Type="Int32" Nullable="false" />
+          <Property Name="ponderacion" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Evaluacion" Relationship="Self.idPon_FK" FromRole="Ponderaciones" ToRole="Evaluacion" />
+        </EntityType>
+        <Association Name="carnet_FK">
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="1" />
+          <End Role="Detalle_Nota" Type="Self.Detalle_Nota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumno">
+              <PropertyRef Name="carnet" />
+            </Principal>
+            <Dependent Role="Detalle_Nota">
+              <PropertyRef Name="carnet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_carnetFK">
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="1" />
+          <End Role="Detalle_Alumno" Type="Self.Detalle_Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumno">
+              <PropertyRef Name="carnet" />
+            </Principal>
+            <Dependent Role="Detalle_Alumno">
+              <PropertyRef Name="carnet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="idCa_FK">
+          <End Role="CursoAcademico" Type="Self.CursoAcademico" Multiplicity="1" />
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursoAcademico">
+              <PropertyRef Name="idCA" />
+            </Principal>
+            <Dependent Role="Alumno">
+              <PropertyRef Name="idCa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CA_PK">
+          <End Role="CursoAcademico" Type="Self.CursoAcademico" Multiplicity="1" />
+          <End Role="Modulo" Type="Self.Modulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursoAcademico">
+              <PropertyRef Name="idCA" />
+            </Principal>
+            <Dependent Role="Modulo">
+              <PropertyRef Name="idCA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_idCaFK">
+          <End Role="CursoAcademico" Type="Self.CursoAcademico" Multiplicity="1" />
+          <End Role="Detalle_Alumno" Type="Self.Detalle_Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursoAcademico">
+              <PropertyRef Name="idCA" />
+            </Principal>
+            <Dependent Role="Detalle_Alumno">
+              <PropertyRef Name="idCa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="idEv_FK">
+          <End Role="Evaluacion" Type="Self.Evaluacion" Multiplicity="1" />
+          <End Role="Detalle_Nota" Type="Self.Detalle_Nota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evaluacion">
+              <PropertyRef Name="idEv" />
+            </Principal>
+            <Dependent Role="Detalle_Nota">
+              <PropertyRef Name="idEv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="idMod_FK">
+          <End Role="Modulo" Type="Self.Modulo" Multiplicity="1" />
+          <End Role="Detalle_Nota" Type="Self.Detalle_Nota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulo">
+              <PropertyRef Name="idMod" />
+            </Principal>
+            <Dependent Role="Detalle_Nota">
+              <PropertyRef Name="idMod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="idPon_FK">
+          <End Role="Ponderaciones" Type="Self.Ponderaciones" Multiplicity="1" />
+          <End Role="Evaluacion" Type="Self.Evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ponderaciones">
+              <PropertyRef Name="idPon" />
+            </Principal>
+            <Dependent Role="Evaluacion">
+              <PropertyRef Name="idPon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Project_PE_2020Entities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Alumno" EntityType="Self.Alumno" />
+          <EntitySet Name="CursoAcademico" EntityType="Self.CursoAcademico" />
+          <EntitySet Name="Detalle_Alumno" EntityType="Self.Detalle_Alumno" />
+          <EntitySet Name="Detalle_Nota" EntityType="Self.Detalle_Nota" />
+          <EntitySet Name="Evaluacion" EntityType="Self.Evaluacion" />
+          <EntitySet Name="Modulo" EntityType="Self.Modulo" />
+          <EntitySet Name="Ponderaciones" EntityType="Self.Ponderaciones" />
+          <AssociationSet Name="carnet_FK" Association="Self.carnet_FK">
+            <End Role="Alumno" EntitySet="Alumno" />
+            <End Role="Detalle_Nota" EntitySet="Detalle_Nota" />
+          </AssociationSet>
+          <AssociationSet Name="fk_carnetFK" Association="Self.fk_carnetFK">
+            <End Role="Alumno" EntitySet="Alumno" />
+            <End Role="Detalle_Alumno" EntitySet="Detalle_Alumno" />
+          </AssociationSet>
+          <AssociationSet Name="idCa_FK" Association="Self.idCa_FK">
+            <End Role="CursoAcademico" EntitySet="CursoAcademico" />
+            <End Role="Alumno" EntitySet="Alumno" />
+          </AssociationSet>
+          <AssociationSet Name="CA_PK" Association="Self.CA_PK">
+            <End Role="CursoAcademico" EntitySet="CursoAcademico" />
+            <End Role="Modulo" EntitySet="Modulo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idCaFK" Association="Self.fk_idCaFK">
+            <End Role="CursoAcademico" EntitySet="CursoAcademico" />
+            <End Role="Detalle_Alumno" EntitySet="Detalle_Alumno" />
+          </AssociationSet>
+          <AssociationSet Name="idEv_FK" Association="Self.idEv_FK">
+            <End Role="Evaluacion" EntitySet="Evaluacion" />
+            <End Role="Detalle_Nota" EntitySet="Detalle_Nota" />
+          </AssociationSet>
+          <AssociationSet Name="idMod_FK" Association="Self.idMod_FK">
+            <End Role="Modulo" EntitySet="Modulo" />
+            <End Role="Detalle_Nota" EntitySet="Detalle_Nota" />
+          </AssociationSet>
+          <AssociationSet Name="idPon_FK" Association="Self.idPon_FK">
+            <End Role="Ponderaciones" EntitySet="Ponderaciones" />
+            <End Role="Evaluacion" EntitySet="Evaluacion" />
+          </AssociationSet>
+          <FunctionImport Name="AgregarDetalleNota">
+            <Parameter Name="carnet" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AgregarDetalleNota1">
+            <Parameter Name="carnet" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CalcularNotaModulo" ReturnType="Collection(Decimal)">
+            <Parameter Name="carnet" Mode="In" Type="Int32" />
+            <Parameter Name="idMod" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Project_PE_2020ModelStoreContainer" CdmEntityContainer="Project_PE_2020Entities4">
+          <EntitySetMapping Name="Alumno">
+            <EntityTypeMapping TypeName="Project_PE_2020Model.Alumno">
+              <MappingFragment StoreEntitySet="Alumno">
+                <ScalarProperty Name="carnet" ColumnName="carnet" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="idCa" ColumnName="idCa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CursoAcademico">
+            <EntityTypeMapping TypeName="Project_PE_2020Model.CursoAcademico">
+              <MappingFragment StoreEntitySet="CursoAcademico">
+                <ScalarProperty Name="idCA" ColumnName="idCA" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Detalle_Alumno">
+            <EntityTypeMapping TypeName="Project_PE_2020Model.Detalle_Alumno">
+              <MappingFragment StoreEntitySet="Detalle_Alumno">
+                <ScalarProperty Name="idDetA" ColumnName="idDetA" />
+                <ScalarProperty Name="carnet" ColumnName="carnet" />
+                <ScalarProperty Name="idCa" ColumnName="idCa" />
+                <ScalarProperty Name="porcentajeAsistencia" ColumnName="porcentajeAsistencia" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Detalle_Nota">
+            <EntityTypeMapping TypeName="Project_PE_2020Model.Detalle_Nota">
+              <MappingFragment StoreEntitySet="Detalle_Nota">
+                <ScalarProperty Name="idDetN" ColumnName="idDetN" />
+                <ScalarProperty Name="carnet" ColumnName="carnet" />
+                <ScalarProperty Name="nota" ColumnName="nota" />
+                <ScalarProperty Name="idMod" ColumnName="idMod" />
+                <ScalarProperty Name="idEv" ColumnName="idEv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Evaluacion">
+            <EntityTypeMapping TypeName="Project_PE_2020Model.Evaluacion">
+              <MappingFragment StoreEntitySet="Evaluacion">
+                <ScalarProperty Name="idEv" ColumnName="idEv" />
+                <ScalarProperty Name="evaluacion1" ColumnName="evaluacion" />
+                <ScalarProperty Name="idPon" ColumnName="idPon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modulo">
+            <EntityTypeMapping TypeName="Project_PE_2020Model.Modulo">
+              <MappingFragment StoreEntitySet="Modulo">
+                <ScalarProperty Name="idMod" ColumnName="idMod" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idCA" ColumnName="idCA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ponderaciones">
+            <EntityTypeMapping TypeName="Project_PE_2020Model.Ponderaciones">
+              <MappingFragment StoreEntitySet="Ponderaciones">
+                <ScalarProperty Name="idPon" ColumnName="idPon" />
+                <ScalarProperty Name="ponderacion" ColumnName="ponderacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AgregarDetalleNota" FunctionName="Project_PE_2020Model.Store.AgregarDetalleNota" />
+          <FunctionImportMapping FunctionImportName="AgregarDetalleNota1" FunctionName="Project_PE_2020Model.Store.AgregarDetalleNota1" />
+          <FunctionImportMapping FunctionImportName="CalcularNotaModulo" FunctionName="Project_PE_2020Model.Store.CalcularNotaModulo" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

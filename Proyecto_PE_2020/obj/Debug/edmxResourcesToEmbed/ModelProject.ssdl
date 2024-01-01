@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Project_PE_2020Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Alumno">
+    <Key>
+      <PropertyRef Name="carnet" />
+    </Key>
+    <Property Name="carnet" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="apellido" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="idCa" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CursoAcademico">
+    <Key>
+      <PropertyRef Name="idCA" />
+    </Key>
+    <Property Name="idCA" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Detalle_Alumno">
+    <Key>
+      <PropertyRef Name="idDetA" />
+    </Key>
+    <Property Name="idDetA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="carnet" Type="int" Nullable="false" />
+    <Property Name="idCa" Type="int" Nullable="false" />
+    <Property Name="porcentajeAsistencia" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="estado" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Detalle_Nota">
+    <Key>
+      <PropertyRef Name="idDetN" />
+    </Key>
+    <Property Name="idDetN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="carnet" Type="int" Nullable="false" />
+    <Property Name="nota" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="idMod" Type="int" Nullable="false" />
+    <Property Name="idEv" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Evaluacion">
+    <Key>
+      <PropertyRef Name="idEv" />
+    </Key>
+    <Property Name="idEv" Type="int" Nullable="false" />
+    <Property Name="evaluacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="idPon" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Modulo">
+    <Key>
+      <PropertyRef Name="idMod" />
+    </Key>
+    <Property Name="idMod" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="idCA" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ponderaciones">
+    <Key>
+      <PropertyRef Name="idPon" />
+    </Key>
+    <Property Name="idPon" Type="int" Nullable="false" />
+    <Property Name="ponderacion" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+  </EntityType>
+  <Association Name="CA_PK">
+    <End Role="CursoAcademico" Type="Self.CursoAcademico" Multiplicity="1" />
+    <End Role="Modulo" Type="Self.Modulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CursoAcademico">
+        <PropertyRef Name="idCA" />
+      </Principal>
+      <Dependent Role="Modulo">
+        <PropertyRef Name="idCA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="carnet_FK">
+    <End Role="Alumno" Type="Self.Alumno" Multiplicity="1" />
+    <End Role="Detalle_Nota" Type="Self.Detalle_Nota" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alumno">
+        <PropertyRef Name="carnet" />
+      </Principal>
+      <Dependent Role="Detalle_Nota">
+        <PropertyRef Name="carnet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_carnetFK">
+    <End Role="Alumno" Type="Self.Alumno" Multiplicity="1" />
+    <End Role="Detalle_Alumno" Type="Self.Detalle_Alumno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alumno">
+        <PropertyRef Name="carnet" />
+      </Principal>
+      <Dependent Role="Detalle_Alumno">
+        <PropertyRef Name="carnet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_idCaFK">
+    <End Role="CursoAcademico" Type="Self.CursoAcademico" Multiplicity="1" />
+    <End Role="Detalle_Alumno" Type="Self.Detalle_Alumno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CursoAcademico">
+        <PropertyRef Name="idCA" />
+      </Principal>
+      <Dependent Role="Detalle_Alumno">
+        <PropertyRef Name="idCa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="idCa_FK">
+    <End Role="CursoAcademico" Type="Self.CursoAcademico" Multiplicity="1" />
+    <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CursoAcademico">
+        <PropertyRef Name="idCA" />
+      </Principal>
+      <Dependent Role="Alumno">
+        <PropertyRef Name="idCa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="idEv_FK">
+    <End Role="Evaluacion" Type="Self.Evaluacion" Multiplicity="1" />
+    <End Role="Detalle_Nota" Type="Self.Detalle_Nota" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Evaluacion">
+        <PropertyRef Name="idEv" />
+      </Principal>
+      <Dependent Role="Detalle_Nota">
+        <PropertyRef Name="idEv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="idMod_FK">
+    <End Role="Modulo" Type="Self.Modulo" Multiplicity="1" />
+    <End Role="Detalle_Nota" Type="Self.Detalle_Nota" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Modulo">
+        <PropertyRef Name="idMod" />
+      </Principal>
+      <Dependent Role="Detalle_Nota">
+        <PropertyRef Name="idMod" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="idPon_FK">
+    <End Role="Ponderaciones" Type="Self.Ponderaciones" Multiplicity="1" />
+    <End Role="Evaluacion" Type="Self.Evaluacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ponderaciones">
+        <PropertyRef Name="idPon" />
+      </Principal>
+      <Dependent Role="Evaluacion">
+        <PropertyRef Name="idPon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AgregarDetalleNota" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="carnet" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AgregarDetalleNota1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="carnet" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CalcularNotaModulo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="carnet" Type="int" Mode="In" />
+    <Parameter Name="idMod" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="Project_PE_2020ModelStoreContainer">
+    <EntitySet Name="Alumno" EntityType="Self.Alumno" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CursoAcademico" EntityType="Self.CursoAcademico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Detalle_Alumno" EntityType="Self.Detalle_Alumno" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Detalle_Nota" EntityType="Self.Detalle_Nota" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Evaluacion" EntityType="Self.Evaluacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Modulo" EntityType="Self.Modulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ponderaciones" EntityType="Self.Ponderaciones" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="CA_PK" Association="Self.CA_PK">
+      <End Role="CursoAcademico" EntitySet="CursoAcademico" />
+      <End Role="Modulo" EntitySet="Modulo" />
+    </AssociationSet>
+    <AssociationSet Name="carnet_FK" Association="Self.carnet_FK">
+      <End Role="Alumno" EntitySet="Alumno" />
+      <End Role="Detalle_Nota" EntitySet="Detalle_Nota" />
+    </AssociationSet>
+    <AssociationSet Name="fk_carnetFK" Association="Self.fk_carnetFK">
+      <End Role="Alumno" EntitySet="Alumno" />
+      <End Role="Detalle_Alumno" EntitySet="Detalle_Alumno" />
+    </AssociationSet>
+    <AssociationSet Name="fk_idCaFK" Association="Self.fk_idCaFK">
+      <End Role="CursoAcademico" EntitySet="CursoAcademico" />
+      <End Role="Detalle_Alumno" EntitySet="Detalle_Alumno" />
+    </AssociationSet>
+    <AssociationSet Name="idCa_FK" Association="Self.idCa_FK">
+      <End Role="CursoAcademico" EntitySet="CursoAcademico" />
+      <End Role="Alumno" EntitySet="Alumno" />
+    </AssociationSet>
+    <AssociationSet Name="idEv_FK" Association="Self.idEv_FK">
+      <End Role="Evaluacion" EntitySet="Evaluacion" />
+      <End Role="Detalle_Nota" EntitySet="Detalle_Nota" />
+    </AssociationSet>
+    <AssociationSet Name="idMod_FK" Association="Self.idMod_FK">
+      <End Role="Modulo" EntitySet="Modulo" />
+      <End Role="Detalle_Nota" EntitySet="Detalle_Nota" />
+    </AssociationSet>
+    <AssociationSet Name="idPon_FK" Association="Self.idPon_FK">
+      <End Role="Ponderaciones" EntitySet="Ponderaciones" />
+      <End Role="Evaluacion" EntitySet="Evaluacion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

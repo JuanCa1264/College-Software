@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Project_PE_2020ModelStoreContainer" CdmEntityContainer="Project_PE_2020Entities4">
+    <EntitySetMapping Name="Alumno">
+      <EntityTypeMapping TypeName="Project_PE_2020Model.Alumno">
+        <MappingFragment StoreEntitySet="Alumno">
+          <ScalarProperty Name="carnet" ColumnName="carnet" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="idCa" ColumnName="idCa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CursoAcademico">
+      <EntityTypeMapping TypeName="Project_PE_2020Model.CursoAcademico">
+        <MappingFragment StoreEntitySet="CursoAcademico">
+          <ScalarProperty Name="idCA" ColumnName="idCA" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Detalle_Alumno">
+      <EntityTypeMapping TypeName="Project_PE_2020Model.Detalle_Alumno">
+        <MappingFragment StoreEntitySet="Detalle_Alumno">
+          <ScalarProperty Name="idDetA" ColumnName="idDetA" />
+          <ScalarProperty Name="carnet" ColumnName="carnet" />
+          <ScalarProperty Name="idCa" ColumnName="idCa" />
+          <ScalarProperty Name="porcentajeAsistencia" ColumnName="porcentajeAsistencia" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Detalle_Nota">
+      <EntityTypeMapping TypeName="Project_PE_2020Model.Detalle_Nota">
+        <MappingFragment StoreEntitySet="Detalle_Nota">
+          <ScalarProperty Name="idDetN" ColumnName="idDetN" />
+          <ScalarProperty Name="carnet" ColumnName="carnet" />
+          <ScalarProperty Name="nota" ColumnName="nota" />
+          <ScalarProperty Name="idMod" ColumnName="idMod" />
+          <ScalarProperty Name="idEv" ColumnName="idEv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Evaluacion">
+      <EntityTypeMapping TypeName="Project_PE_2020Model.Evaluacion">
+        <MappingFragment StoreEntitySet="Evaluacion">
+          <ScalarProperty Name="idEv" ColumnName="idEv" />
+          <ScalarProperty Name="evaluacion1" ColumnName="evaluacion" />
+          <ScalarProperty Name="idPon" ColumnName="idPon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Modulo">
+      <EntityTypeMapping TypeName="Project_PE_2020Model.Modulo">
+        <MappingFragment StoreEntitySet="Modulo">
+          <ScalarProperty Name="idMod" ColumnName="idMod" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idCA" ColumnName="idCA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ponderaciones">
+      <EntityTypeMapping TypeName="Project_PE_2020Model.Ponderaciones">
+        <MappingFragment StoreEntitySet="Ponderaciones">
+          <ScalarProperty Name="idPon" ColumnName="idPon" />
+          <ScalarProperty Name="ponderacion" ColumnName="ponderacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AgregarDetalleNota" FunctionName="Project_PE_2020Model.Store.AgregarDetalleNota" />
+    <FunctionImportMapping FunctionImportName="AgregarDetalleNota1" FunctionName="Project_PE_2020Model.Store.AgregarDetalleNota1" />
+    <FunctionImportMapping FunctionImportName="CalcularNotaModulo" FunctionName="Project_PE_2020Model.Store.CalcularNotaModulo" />
+  </EntityContainerMapping>
+</Mapping>

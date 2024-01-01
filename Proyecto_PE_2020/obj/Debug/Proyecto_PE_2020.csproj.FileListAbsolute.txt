@@ -1,0 +1,42 @@
+C:\Users\JC\Desktop\Practicas\Proyecto_PE_2020\Proyecto_PE_2020\bin\Debug\Proyecto_PE_2020.exe.config
+C:\Users\JC\Desktop\Practicas\Proyecto_PE_2020\Proyecto_PE_2020\bin\Debug\Proyecto_PE_2020.exe
+C:\Users\JC\Desktop\Practicas\Proyecto_PE_2020\Proyecto_PE_2020\bin\Debug\Proyecto_PE_2020.pdb
+C:\Users\JC\Desktop\Practicas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.csprojResolveAssemblyReference.cache
+C:\Users\JC\Desktop\Practicas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.frmPrincipal.resources
+C:\Users\JC\Desktop\Practicas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.Properties.Resources.resources
+C:\Users\JC\Desktop\Practicas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.csproj.GenerateResource.Cache
+C:\Users\JC\Desktop\Practicas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.exe
+C:\Users\JC\Desktop\Practicas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.pdb
+C:\Users\JC\Desktop\Practicas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.Vistas.frmAlumno.resources
+C:\Users\JC\Desktop\Practicas\Proyecto_PE_2020\Proyecto_PE_2020\bin\Debug\EntityFramework.dll
+C:\Users\JC\Desktop\Practicas\Proyecto_PE_2020\Proyecto_PE_2020\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\JC\Desktop\Practicas\Proyecto_PE_2020\Proyecto_PE_2020\bin\Debug\EntityFramework.xml
+C:\Users\JC\Desktop\Practicas\Proyecto_PE_2020\Proyecto_PE_2020\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\JC\Desktop\Practicas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.Vistas.frmPonderaciones.resources
+C:\Users\JC\Desktop\Practicas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.Vistas.frmDetalle.resources
+C:\Users\JC\Desktop\Practicas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.Vistas.frmNotas.resources
+C:\Users\JC\Desktop\Practicas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.Vistas.frmReport1.resources
+C:\Users\JC\Desktop\Practicas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.Vistas.frmReport2.resources
+C:\Users\JC\Desktop\Practicas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.Vistas.frmReport3.resources
+C:\Users\JC\Desktop\Practicas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.Vistas.frmReport4.resources
+C:\Users\JC\Desktop\One for all\Prácticas\Proyecto_PE_2020\Proyecto_PE_2020\bin\Debug\Proyecto_PE_2020.exe.config
+C:\Users\JC\Desktop\One for all\Prácticas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.exe
+C:\Users\JC\Desktop\One for all\Prácticas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.pdb
+C:\Users\JC\Desktop\One for all\Prácticas\Proyecto_PE_2020\Proyecto_PE_2020\bin\Debug\Proyecto_PE_2020.exe
+C:\Users\JC\Desktop\One for all\Prácticas\Proyecto_PE_2020\Proyecto_PE_2020\bin\Debug\Proyecto_PE_2020.pdb
+C:\Users\JC\Desktop\One for all\Prácticas\Proyecto_PE_2020\Proyecto_PE_2020\bin\Debug\EntityFramework.dll
+C:\Users\JC\Desktop\One for all\Prácticas\Proyecto_PE_2020\Proyecto_PE_2020\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\JC\Desktop\One for all\Prácticas\Proyecto_PE_2020\Proyecto_PE_2020\bin\Debug\EntityFramework.xml
+C:\Users\JC\Desktop\One for all\Prácticas\Proyecto_PE_2020\Proyecto_PE_2020\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\JC\Desktop\One for all\Prácticas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.csprojResolveAssemblyReference.cache
+C:\Users\JC\Desktop\One for all\Prácticas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.frmPrincipal.resources
+C:\Users\JC\Desktop\One for all\Prácticas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.Properties.Resources.resources
+C:\Users\JC\Desktop\One for all\Prácticas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.Vistas.frmAlumno.resources
+C:\Users\JC\Desktop\One for all\Prácticas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.Vistas.frmDetalle.resources
+C:\Users\JC\Desktop\One for all\Prácticas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.Vistas.frmNotas.resources
+C:\Users\JC\Desktop\One for all\Prácticas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.Vistas.frmPonderaciones.resources
+C:\Users\JC\Desktop\One for all\Prácticas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.Vistas.frmReport1.resources
+C:\Users\JC\Desktop\One for all\Prácticas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.Vistas.frmReport2.resources
+C:\Users\JC\Desktop\One for all\Prácticas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.Vistas.frmReport3.resources
+C:\Users\JC\Desktop\One for all\Prácticas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.Vistas.frmReport4.resources
+C:\Users\JC\Desktop\One for all\Prácticas\Proyecto_PE_2020\Proyecto_PE_2020\obj\Debug\Proyecto_PE_2020.csproj.GenerateResource.Cache
